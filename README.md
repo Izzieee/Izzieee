@@ -10,7 +10,7 @@
 ##
 ### Linguagens de Programação
 
-<div style="display: inline_block"><br>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;"><br>
   <img align="center" alt="Jacy-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="Jacy-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
   <img align="center" alt="Jacy-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
@@ -19,18 +19,17 @@
 
 ### Softwares
 
-<div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
 <img align="center" alt="Jacy-git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
 <img align="center" alt="Jacy-gh" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />                  
 <img align="center" alt="Jacy-nj" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" />
 <img align="center" alt="Jacy-fg" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" />
-          
 </div>         
           
 
 ### Ferramentas de desenvolvimento
 
-<div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
         <img align="center" alt="Jacy-VS" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />          
         <img align="center" alt="Jacy-Js" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" />
         <img align="center" alt="Jacy-vt" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" /> 
