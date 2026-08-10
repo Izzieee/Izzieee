@@ -2,7 +2,8 @@
 
 ### Sobre mim:
 
-- Acadêmica de Engenharia de Software (ULBRA)
+- Engenharia de Software - ULBRA
+- Sistemas para Internet - IFTO
 - Dando os primeiros passos aprendendo linguagens de programação e desenvolvimento web 
 - Em busca de participações em estudos, artigos e projetos de extensão
 - Interesse em seguir carreira na área de cibersegurança
