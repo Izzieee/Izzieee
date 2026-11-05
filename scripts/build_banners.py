@@ -79,9 +79,29 @@ def esc(text: str) -> str:
 # CSS / defs / camadas comuns
 # ---------------------------------------------------------------------------
 COMMON_CSS = """
-    @keyframes fall__H__ {
-      from { transform: translateY(-__H__px); }
-      to   { transform: translateY(0px); }
+    @keyframes waveS {
+      0%, 100% { transform: translateY(-3px); }
+      50%      { transform: translateY(3px); }
+    }
+    @keyframes waveA {
+      0%, 100% { transform: translateY(-6px); }
+      50%      { transform: translateY(6px); }
+    }
+    @keyframes waveB {
+      0%, 100% { transform: translateY(-10px); }
+      50%      { transform: translateY(10px); }
+    }
+    @keyframes waveC {
+      0%, 100% { transform: translateY(-15px); }
+      50%      { transform: translateY(15px); }
+    }
+    @keyframes driftW {
+      from { transform: translateX(0px); }
+      to   { transform: translateX(-38px); }
+    }
+    @keyframes shimmer {
+      0%, 100% { opacity: .5; }
+      50%      { opacity: 1; }
     }
     @keyframes jitterA {
       0%, 88%, 100% { transform: translate(0, 0); }
@@ -122,7 +142,6 @@ COMMON_CSS = """
 
 
 def defs(H: int, extra: str = "", W: int = 1200) -> str:
-    css = COMMON_CSS.replace("__H__", str(H))
     return f'''<defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#070001"/>
@@ -167,41 +186,69 @@ def defs(H: int, extra: str = "", W: int = 1200) -> str:
     </pattern>
     <clipPath id="frame"><rect x="0" y="0" width="{W}" height="{H}"/></clipPath>
     <style><![CDATA[
-{css}
+{COMMON_CSS}
     ]]></style>
     {extra}
   </defs>'''
 
 
-def rain(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str:
+def liquid(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str:
+    """Fundo ASCII de onda liquida: faixas em deriva, cristas senoidais e espuma."""
     random.seed(seed)
-    chars = "01ABCDEF{}[]<>/\\$#@%&*+=;:._"
-    line_h = 20
-    n_lines = H // line_h + 1
-    colors = ["#ff0033", "#c40024", "#8b0016", "#ff3355", "#5e000f"]
-    out, x, i = [], 6, 0
-    while x < W:
-        seq = "".join(random.choice(chars) for _ in range(n_lines))
-        color = colors[i % len(colors)]
-        op = round(random.uniform(lo, hi), 2)
-        dur = round(random.uniform(9, 22), 1)
-        delay = -round(random.uniform(0, 22), 1)
-        spans = "".join(
-            f'<tspan x="{x}" dy="{0 if j == 0 else line_h}">{esc(c)}</tspan>'
-            for j, c in enumerate(seq)
-        )
-        block = (
-            f'<text x="{x}" y="0" font-family="{MONO}" font-size="15" '
-            f'fill="{color}" opacity="{op}" xml:space="preserve">{spans}</text>'
-        )
+    out: list[str] = []
+
+    # --- camada profunda: faixas de caracteres que deslizam e undulam ---
+    depth_chars = "~≈-=_+·:.~"
+    deep_colors = ["#5e000f", "#6b0012", "#8b0016", "#a8001d"]
+    row_h = 26
+    n_rows = int(H / row_h) + 2
+    for r in range(n_rows):
+        y = 12 + r * row_h
+        seq = "".join(random.choice(depth_chars) for _ in range(int(W / 9) + 4))
+        bob = round(random.uniform(6.5, 11.0), 1)
+        bob_delay = -round(((r / n_rows) * bob * 1.7) % bob, 2)
+        drift = round(random.uniform(15.0, 26.0), 1)
+        drift_delay = -round(random.uniform(0, drift), 2)
         out.append(
-            f'<g class="rain" style="animation: fall{H} {dur}s linear infinite; '
-            f'animation-delay: {delay}s;">{block}'
-            f'<g transform="translate(0,{H})">{block}</g></g>'
+            f'<g style="animation: waveS {bob}s ease-in-out infinite; animation-delay: {bob_delay}s;">'
+            f'<text x="-40" y="{y}" font-family="{MONO}" font-size="15" fill="{random.choice(deep_colors)}" '
+            f'fill-opacity="{round(random.uniform(max(0.04, lo * 0.45), max(0.07, hi * 0.5)), 2)}" '
+            f'xml:space="preserve" style="animation: driftW {drift}s ease-in-out infinite alternate; '
+            f'animation-delay: {drift_delay}s;">{esc(seq)}</text></g>'
         )
-        x += random.choice([28, 30, 32, 34])
-        i += 1
-    return f'<g clip-path="url(#frame)" opacity="0.9">{"".join(out)}</g>'
+
+    # --- cristas: caracteres que sobem e descem formando ondas viajantes ---
+    crest_chars = "~≈~=-_≈"
+    crest_colors = ["#ff4d6d", "#ff0033", "#ff3355"]
+    waves = ["waveA", "waveB", "waveC"] if H >= 340 else ["waveS", "waveA"]
+    n_surf = 3 if H >= 320 else 2
+    for s in range(n_surf):
+        base_y = int(H * (0.34 + s * (0.30 if n_surf == 3 else 0.34)))
+        cls = waves[s % len(waves)]
+        dur = round(6.4 + s * 1.7 + random.uniform(0, 1.1), 1)
+        wave_len = 360 + s * 110
+        shimmer_dur = round(2.9 + s * 0.8, 1)
+        for x in range(2, W, 13):
+            phase = ((x / wave_len) * dur) % dur
+            out.append(
+                f'<g style="animation: {cls} {dur}s ease-in-out infinite, shimmer {shimmer_dur}s ease-in-out infinite; '
+                f'animation-delay: -{phase:.2f}s, -{(phase * 0.6) % shimmer_dur:.2f}s;">'
+                f'<text x="{x}" y="{base_y}" font-family="{MONO}" font-size="16" fill="{crest_colors[s % 3]}" '
+                f'fill-opacity="{round(random.uniform(0.28, 0.62), 2)}">{esc(random.choice(crest_chars))}</text></g>'
+            )
+
+    # --- espuma: gotas soltas cintilando ---
+    for _ in range(max(3, int(W / 90))):
+        out.append(
+            f'<text x="{random.uniform(20, W - 20):.1f}" y="{random.uniform(16, H - 16):.1f}" '
+            f'font-family="{MONO}" font-size="{random.choice([9, 10, 11])}" fill="#ff8fa3" '
+            f'fill-opacity="{round(random.uniform(0.16, 0.42), 2)}" xml:space="preserve" '
+            f'style="animation: floaty {round(random.uniform(4, 9), 1)}s ease-in-out infinite; '
+            f'animation-delay: -{round(random.uniform(0, 8), 1)}s;">'
+            f'{esc(random.choice(["·", "+", ".", ":", "≈"]))}</text>'
+        )
+
+    return f'<g clip-path="url(#frame)" opacity="0.85">{"".join(out)}</g>'
 
 
 def backdrop(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str:
@@ -209,7 +256,7 @@ def backdrop(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> s
   <rect width="{W}" height="{H}" fill="url(#bg)"/>
   <rect width="{W}" height="{H}" fill="url(#glow)"/>
   <rect width="{W}" height="{H}" fill="url(#grid)"/>
-  {rain(W, H, seed, lo, hi)}
+  {liquid(W, H, seed, lo, hi)}
 '''
 
 
