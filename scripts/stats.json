@@ -1,0 +1,45 @@
+{
+  "stars": "0",
+  "commits": "145",
+  "prs": "6",
+  "issues": "6",
+  "contributed": "1",
+  "total_contributions": "168",
+  "current_streak": "2",
+  "longest_streak": "4",
+  "langs": [
+    [
+      "HTML",
+      51.29
+    ],
+    [
+      "CSS",
+      16.38
+    ],
+    [
+      "JavaScript",
+      15.58
+    ],
+    [
+      "Vue",
+      10.82
+    ],
+    [
+      "Python",
+      3.43
+    ],
+    [
+      "TypeScript",
+      1.49
+    ],
+    [
+      "TSQL",
+      1.0
+    ],
+    [
+      "Haskell",
+      0.0
+    ]
+  ],
+  "synced": "05.11.2026"
+}

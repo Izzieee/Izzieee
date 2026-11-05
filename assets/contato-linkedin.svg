@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="t d">
+  <title id="t">LINKEDIN — in/jacyane-martins</title>
+  <desc id="d">Card animado de contato: LINKEDIN, in/jacyane-martins.</desc>
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070001"/>
+      <stop offset="0.55" stop-color="#0d0004"/>
+      <stop offset="1" stop-color="#160007"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.18" r="0.78">
+      <stop offset="0" stop-color="#ff0033" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#8b0016" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff4d6d"/>
+      <stop offset="0.35" stop-color="#ff0033"/>
+      <stop offset="0.65" stop-color="#ff3355"/>
+      <stop offset="1" stop-color="#b3001b"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b3001b"/>
+      <stop offset="0.55" stop-color="#ff0033"/>
+      <stop offset="1" stop-color="#ff6680"/>
+    </linearGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff0033" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff4d6d" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff0033" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="scanY" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff0033" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff4d6d" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#ff0033" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b0009"/>
+      <stop offset="1" stop-color="#0a0003"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ff0033" stroke-width="0.6" opacity="0.05"/>
+    </pattern>
+    <pattern id="scan" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1" height="1" fill="#ff0033" opacity="0.055"/>
+    </pattern>
+    <clipPath id="frame"><rect x="0" y="0" width="1200" height="240"/></clipPath>
+    <style><![CDATA[
+
+    @keyframes fall240 {
+      from { transform: translateY(-240px); }
+      to   { transform: translateY(0px); }
+    }
+    @keyframes jitterA {
+      0%, 88%, 100% { transform: translate(0, 0); }
+      89% { transform: translate(-4px, 2px); }
+      90% { transform: translate(3px, -2px); }
+      91% { transform: translate(-2px, 1px); }
+      92% { transform: translate(0, 0); }
+    }
+    @keyframes jitterB {
+      0%, 84%, 100% { transform: translate(0, 0); }
+      85% { transform: translate(4px, -2px); }
+      86% { transform: translate(-3px, 2px); }
+      87% { transform: translate(2px, 1px); }
+      88% { transform: translate(0, 0); }
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: .18; }
+      50% { opacity: .55; }
+    }
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes flicker {
+      0%, 96%, 100% { opacity: .85; }
+      97% { opacity: .25; }
+      98% { opacity: 1; }
+      99% { opacity: .45; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+
+    ]]></style>
+    
+  </defs>
+  
+  <rect width="240" height="240" fill="url(#bg)"/>
+  <rect width="240" height="240" fill="url(#glow)"/>
+  <rect width="240" height="240" fill="url(#grid)"/>
+  <g clip-path="url(#frame)" opacity="0.9"><g class="rain" style="animation: fall240 11.6s linear infinite; animation-delay: -18.0s;"><text x="6" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#ff0033" opacity="0.14" xml:space="preserve"><tspan x="6" dy="0">\</tspan><tspan x="6" dy="20">B</tspan><tspan x="6" dy="20">&amp;</tspan><tspan x="6" dy="20">%</tspan><tspan x="6" dy="20">&lt;</tspan><tspan x="6" dy="20">#</tspan><tspan x="6" dy="20">*</tspan><tspan x="6" dy="20">0</tspan><tspan x="6" dy="20">E</tspan><tspan x="6" dy="20">{</tspan><tspan x="6" dy="20">+</tspan><tspan x="6" dy="20">:</tspan><tspan x="6" dy="20">&amp;</tspan></text><g transform="translate(0,240)"><text x="6" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#ff0033" opacity="0.14" xml:space="preserve"><tspan x="6" dy="0">\</tspan><tspan x="6" dy="20">B</tspan><tspan x="6" dy="20">&amp;</tspan><tspan x="6" dy="20">%</tspan><tspan x="6" dy="20">&lt;</tspan><tspan x="6" dy="20">#</tspan><tspan x="6" dy="20">*</tspan><tspan x="6" dy="20">0</tspan><tspan x="6" dy="20">E</tspan><tspan x="6" dy="20">{</tspan><tspan x="6" dy="20">+</tspan><tspan x="6" dy="20">:</tspan><tspan x="6" dy="20">&amp;</tspan></text></g></g><g class="rain" style="animation: fall240 9.6s linear infinite; animation-delay: -13.0s;"><text x="36" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#c40024" opacity="0.06" xml:space="preserve"><tspan x="36" dy="0">A</tspan><tspan x="36" dy="20">_</tspan><tspan x="36" dy="20">&gt;</tspan><tspan x="36" dy="20">/</tspan><tspan x="36" dy="20">E</tspan><tspan x="36" dy="20">=</tspan><tspan x="36" dy="20">0</tspan><tspan x="36" dy="20">A</tspan><tspan x="36" dy="20">&lt;</tspan><tspan x="36" dy="20">*</tspan><tspan x="36" dy="20">0</tspan><tspan x="36" dy="20">A</tspan><tspan x="36" dy="20">D</tspan></text><g transform="translate(0,240)"><text x="36" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#c40024" opacity="0.06" xml:space="preserve"><tspan x="36" dy="0">A</tspan><tspan x="36" dy="20">_</tspan><tspan x="36" dy="20">&gt;</tspan><tspan x="36" dy="20">/</tspan><tspan x="36" dy="20">E</tspan><tspan x="36" dy="20">=</tspan><tspan x="36" dy="20">0</tspan><tspan x="36" dy="20">A</tspan><tspan x="36" dy="20">&lt;</tspan><tspan x="36" dy="20">*</tspan><tspan x="36" dy="20">0</tspan><tspan x="36" dy="20">A</tspan><tspan x="36" dy="20">D</tspan></text></g></g><g class="rain" style="animation: fall240 15.6s linear infinite; animation-delay: -16.4s;"><text x="66" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#8b0016" opacity="0.1" xml:space="preserve"><tspan x="66" dy="0">#</tspan><tspan x="66" dy="20">E</tspan><tspan x="66" dy="20">A</tspan><tspan x="66" dy="20">.</tspan><tspan x="66" dy="20">0</tspan><tspan x="66" dy="20">;</tspan><tspan x="66" dy="20">/</tspan><tspan x="66" dy="20">&lt;</tspan><tspan x="66" dy="20">E</tspan><tspan x="66" dy="20">}</tspan><tspan x="66" dy="20">=</tspan><tspan x="66" dy="20">C</tspan><tspan x="66" dy="20">#</tspan></text><g transform="translate(0,240)"><text x="66" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#8b0016" opacity="0.1" xml:space="preserve"><tspan x="66" dy="0">#</tspan><tspan x="66" dy="20">E</tspan><tspan x="66" dy="20">A</tspan><tspan x="66" dy="20">.</tspan><tspan x="66" dy="20">0</tspan><tspan x="66" dy="20">;</tspan><tspan x="66" dy="20">/</tspan><tspan x="66" dy="20">&lt;</tspan><tspan x="66" dy="20">E</tspan><tspan x="66" dy="20">}</tspan><tspan x="66" dy="20">=</tspan><tspan x="66" dy="20">C</tspan><tspan x="66" dy="20">#</tspan></text></g></g><g class="rain" style="animation: fall240 19.8s linear infinite; animation-delay: -0.6s;"><text x="100" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#ff3355" opacity="0.12" xml:space="preserve"><tspan x="100" dy="0">$</tspan><tspan x="100" dy="20">D</tspan><tspan x="100" dy="20">1</tspan><tspan x="100" dy="20">0</tspan><tspan x="100" dy="20">F</tspan><tspan x="100" dy="20">/</tspan><tspan x="100" dy="20">D</tspan><tspan x="100" dy="20">E</tspan><tspan x="100" dy="20">F</tspan><tspan x="100" dy="20">1</tspan><tspan x="100" dy="20">&amp;</tspan><tspan x="100" dy="20">{</tspan><tspan x="100" dy="20">E</tspan></text><g transform="translate(0,240)"><text x="100" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#ff3355" opacity="0.12" xml:space="preserve"><tspan x="100" dy="0">$</tspan><tspan x="100" dy="20">D</tspan><tspan x="100" dy="20">1</tspan><tspan x="100" dy="20">0</tspan><tspan x="100" dy="20">F</tspan><tspan x="100" dy="20">/</tspan><tspan x="100" dy="20">D</tspan><tspan x="100" dy="20">E</tspan><tspan x="100" dy="20">F</tspan><tspan x="100" dy="20">1</tspan><tspan x="100" dy="20">&amp;</tspan><tspan x="100" dy="20">{</tspan><tspan x="100" dy="20">E</tspan></text></g></g><g class="rain" style="animation: fall240 21.4s linear infinite; animation-delay: -13.6s;"><text x="132" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#5e000f" opacity="0.08" xml:space="preserve"><tspan x="132" dy="0">_</tspan><tspan x="132" dy="20">_</tspan><tspan x="132" dy="20">B</tspan><tspan x="132" dy="20">D</tspan><tspan x="132" dy="20">}</tspan><tspan x="132" dy="20">F</tspan><tspan x="132" dy="20">&amp;</tspan><tspan x="132" dy="20">_</tspan><tspan x="132" dy="20">@</tspan><tspan x="132" dy="20">*</tspan><tspan x="132" dy="20">F</tspan><tspan x="132" dy="20">_</tspan><tspan x="132" dy="20">&amp;</tspan></text><g transform="translate(0,240)"><text x="132" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#5e000f" opacity="0.08" xml:space="preserve"><tspan x="132" dy="0">_</tspan><tspan x="132" dy="20">_</tspan><tspan x="132" dy="20">B</tspan><tspan x="132" dy="20">D</tspan><tspan x="132" dy="20">}</tspan><tspan x="132" dy="20">F</tspan><tspan x="132" dy="20">&amp;</tspan><tspan x="132" dy="20">_</tspan><tspan x="132" dy="20">@</tspan><tspan x="132" dy="20">*</tspan><tspan x="132" dy="20">F</tspan><tspan x="132" dy="20">_</tspan><tspan x="132" dy="20">&amp;</tspan></text></g></g><g class="rain" style="animation: fall240 20.9s linear infinite; animation-delay: -1.2s;"><text x="166" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#ff0033" opacity="0.06" xml:space="preserve"><tspan x="166" dy="0">/</tspan><tspan x="166" dy="20">}</tspan><tspan x="166" dy="20">+</tspan><tspan x="166" dy="20">]</tspan><tspan x="166" dy="20">D</tspan><tspan x="166" dy="20">{</tspan><tspan x="166" dy="20">C</tspan><tspan x="166" dy="20">.</tspan><tspan x="166" dy="20">D</tspan><tspan x="166" dy="20">}</tspan><tspan x="166" dy="20">1</tspan><tspan x="166" dy="20">C</tspan><tspan x="166" dy="20">1</tspan></text><g transform="translate(0,240)"><text x="166" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#ff0033" opacity="0.06" xml:space="preserve"><tspan x="166" dy="0">/</tspan><tspan x="166" dy="20">}</tspan><tspan x="166" dy="20">+</tspan><tspan x="166" dy="20">]</tspan><tspan x="166" dy="20">D</tspan><tspan x="166" dy="20">{</tspan><tspan x="166" dy="20">C</tspan><tspan x="166" dy="20">.</tspan><tspan x="166" dy="20">D</tspan><tspan x="166" dy="20">}</tspan><tspan x="166" dy="20">1</tspan><tspan x="166" dy="20">C</tspan><tspan x="166" dy="20">1</tspan></text></g></g><g class="rain" style="animation: fall240 9.7s linear infinite; animation-delay: -15.1s;"><text x="196" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#c40024" opacity="0.13" xml:space="preserve"><tspan x="196" dy="0">[</tspan><tspan x="196" dy="20">#</tspan><tspan x="196" dy="20">{</tspan><tspan x="196" dy="20">.</tspan><tspan x="196" dy="20">&gt;</tspan><tspan x="196" dy="20">:</tspan><tspan x="196" dy="20">\</tspan><tspan x="196" dy="20">1</tspan><tspan x="196" dy="20">*</tspan><tspan x="196" dy="20">\</tspan><tspan x="196" dy="20">[</tspan><tspan x="196" dy="20">+</tspan><tspan x="196" dy="20">$</tspan></text><g transform="translate(0,240)"><text x="196" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#c40024" opacity="0.13" xml:space="preserve"><tspan x="196" dy="0">[</tspan><tspan x="196" dy="20">#</tspan><tspan x="196" dy="20">{</tspan><tspan x="196" dy="20">.</tspan><tspan x="196" dy="20">&gt;</tspan><tspan x="196" dy="20">:</tspan><tspan x="196" dy="20">\</tspan><tspan x="196" dy="20">1</tspan><tspan x="196" dy="20">*</tspan><tspan x="196" dy="20">\</tspan><tspan x="196" dy="20">[</tspan><tspan x="196" dy="20">+</tspan><tspan x="196" dy="20">$</tspan></text></g></g><g class="rain" style="animation: fall240 20.3s linear infinite; animation-delay: -17.9s;"><text x="228" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#8b0016" opacity="0.11" xml:space="preserve"><tspan x="228" dy="0">*</tspan><tspan x="228" dy="20">_</tspan><tspan x="228" dy="20">.</tspan><tspan x="228" dy="20">C</tspan><tspan x="228" dy="20">.</tspan><tspan x="228" dy="20">;</tspan><tspan x="228" dy="20">=</tspan><tspan x="228" dy="20">;</tspan><tspan x="228" dy="20">B</tspan><tspan x="228" dy="20">$</tspan><tspan x="228" dy="20">[</tspan><tspan x="228" dy="20">}</tspan><tspan x="228" dy="20">%</tspan></text><g transform="translate(0,240)"><text x="228" y="0" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="15" fill="#8b0016" opacity="0.11" xml:space="preserve"><tspan x="228" dy="0">*</tspan><tspan x="228" dy="20">_</tspan><tspan x="228" dy="20">.</tspan><tspan x="228" dy="20">C</tspan><tspan x="228" dy="20">.</tspan><tspan x="228" dy="20">;</tspan><tspan x="228" dy="20">=</tspan><tspan x="228" dy="20">;</tspan><tspan x="228" dy="20">B</tspan><tspan x="228" dy="20">$</tspan><tspan x="228" dy="20">[</tspan><tspan x="228" dy="20">}</tspan><tspan x="228" dy="20">%</tspan></text></g></g></g>
+
+  <rect x="6" y="6" width="228" height="228" rx="12" fill="#0c0003" opacity=".94" stroke="#6b0012" stroke-width="1.4"/>
+  <rect x="6" y="6" width="228" height="228" rx="12" fill="none" stroke="#ff0033" stroke-width="1.2"
+        opacity=".2" style="animation: pulse 3.4s ease-in-out infinite; animation-delay: -1.8s;"/>
+  <g font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="9.5" fill="#ff2d55" opacity=".8">
+    <text x="18" y="24" xml:space="preserve">+--[ SOCIAL ]</text>
+    <text x="222" y="24" text-anchor="end" xml:space="preserve">[ 04 ]--+</text>
+  </g>
+  <rect x="84" y="38" width="72" height="72" rx="15" fill="url(#tile)" stroke="#8b0016" stroke-width="1.3"/>
+  <rect x="84" y="38" width="72" height="72" rx="15" fill="none" stroke="#ff0033" stroke-width="1"
+        opacity=".25" style="animation: pulse 3s ease-in-out infinite; animation-delay: -2.0s;"/>
+  <g style="animation: floaty 4.2s ease-in-out infinite; animation-delay: -2.4s;">
+    <g transform="translate(100.00,54.00) scale(1.66667)"><g fill="#ffffff"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></g></g>
+  </g>
+  <text x="120" y="142" text-anchor="middle" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="16" font-weight="700"
+        letter-spacing="2" fill="url(#titleGrad)">LINKEDIN</text>
+  <text x="120" y="168" text-anchor="middle" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="12.5" fill="#ffb3c0">in/jacyane-martins</text>
+  <line x1="24" y1="196" x2="216" y2="196" stroke="#6b0012" stroke-dasharray="4 6" opacity=".7"/>
+  <text x="24" y="220" font-family="'Cascadia Code',Consolas,'Courier New',monospace" font-size="9.5" letter-spacing="1.2"
+        fill="#ff8fa3" xml:space="preserve">&gt; abrir perfil</text>
+  <rect x="198" y="211" width="8" height="11" fill="#ff2d55" opacity="0">
+    <animate attributeName="opacity" values="0;1;0;1;0" dur="1.2s" begin="1.6s" repeatCount="indefinite"/>
+  </rect>
+  <rect width="240" height="240" fill="url(#scan)" pointer-events="none"/>
+
+</svg>
