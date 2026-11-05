@@ -80,15 +80,15 @@ def esc(text: str) -> str:
 # ---------------------------------------------------------------------------
 COMMON_CSS = """
     @keyframes liquidA {
-      0%, 100% { transform: translate(-2px, -7px); opacity: .32; }
-      50%      { transform: translate(2px, 7px); opacity: .88; }
+      0%, 100% { transform: translate(-2px, -7px); opacity: .18; }
+      50%      { transform: translate(2px, 7px); opacity: .95; }
     }
     @keyframes liquidB {
-      0%, 100% { transform: translate(3px, -11px); opacity: .26; }
-      50%      { transform: translate(-3px, 11px); opacity: .72; }
+      0%, 100% { transform: translate(3px, -11px); opacity: .15; }
+      50%      { transform: translate(-3px, 11px); opacity: .8; }
     }
     @keyframes liquidC {
-      0%, 100% { transform: translate(-3px, -5px); opacity: .5; }
+      0%, 100% { transform: translate(-3px, -5px); opacity: .4; }
       50%      { transform: translate(3px, 5px); opacity: 1; }
     }
     @keyframes jitterA {
@@ -186,13 +186,13 @@ def liquid(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str
     out: list[str] = []
 
     # malha dimensionada para preencher o banner inteiro
-    cell_w = max(36.0, ((W * H) / 560 * 1.4) ** 0.5)
+    cell_w = max(38.0, ((W * H) / 420 * 1.4) ** 0.5)
     cell_h = cell_w * 0.62
-    font = max(13, round(cell_w * 0.38))
+    font = max(12, round(cell_w * 0.34))
     cols = int(W / cell_w) + 2
     rows = int(H / cell_h) + 2
     chars = "~≈~-_.=+~<>|~"
-    palette = ["#6b0012", "#8b0016", "#a8001d", "#c40024", "#ff2d55"]
+    palette = ["#c40024", "#ff2d55", "#a8001d", "#ff3355"]
 
     # onda diagonal coerente: fase cresce com x e y, entao as cristas viajam
     period = 9.0
@@ -209,14 +209,14 @@ def liquid(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str
             kind = (c * 7 + r * 5) % 13
             patch = (r // 6 + c // 8) % 4 == 0
             if kind == 0:
-                cls, fill, fop = "liquidC", "#ff4d6d", round(random.uniform(0.3, 0.6), 2)
+                cls, fill, fop = "liquidC", "#ff4d6d", round(random.uniform(0.5, 0.7), 2)
             elif patch:
-                cls, fill, fop = "liquidB", "#8b0016", round(random.uniform(0.14, 0.4), 2)
+                cls, fill, fop = "liquidB", "#8b0016", round(random.uniform(0.28, 0.38), 2)
             else:
                 cls, fill, fop = (
                     "liquidA",
                     random.choice(palette),
-                    round(random.uniform(max(0.08, lo * 1.1), max(0.16, hi * 1.6)), 2),
+                    round(random.uniform(0.24 + lo * 0.2, 0.32 + hi * 0.2), 2),
                 )
             out.append(
                 f'<g style="animation: {cls} {period}s ease-in-out infinite; animation-delay: {delay:.2f}s;">'
