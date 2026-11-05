@@ -79,29 +79,17 @@ def esc(text: str) -> str:
 # CSS / defs / camadas comuns
 # ---------------------------------------------------------------------------
 COMMON_CSS = """
-    @keyframes waveS {
-      0%, 100% { transform: translateY(-3px); }
-      50%      { transform: translateY(3px); }
+    @keyframes liquidA {
+      0%, 100% { transform: translate(-2px, -7px); opacity: .32; }
+      50%      { transform: translate(2px, 7px); opacity: .88; }
     }
-    @keyframes waveA {
-      0%, 100% { transform: translateY(-6px); }
-      50%      { transform: translateY(6px); }
+    @keyframes liquidB {
+      0%, 100% { transform: translate(3px, -11px); opacity: .26; }
+      50%      { transform: translate(-3px, 11px); opacity: .72; }
     }
-    @keyframes waveB {
-      0%, 100% { transform: translateY(-10px); }
-      50%      { transform: translateY(10px); }
-    }
-    @keyframes waveC {
-      0%, 100% { transform: translateY(-15px); }
-      50%      { transform: translateY(15px); }
-    }
-    @keyframes driftW {
-      from { transform: translateX(0px); }
-      to   { transform: translateX(-38px); }
-    }
-    @keyframes shimmer {
-      0%, 100% { opacity: .5; }
-      50%      { opacity: 1; }
+    @keyframes liquidC {
+      0%, 100% { transform: translate(-3px, -5px); opacity: .5; }
+      50%      { transform: translate(3px, 5px); opacity: 1; }
     }
     @keyframes jitterA {
       0%, 88%, 100% { transform: translate(0, 0); }
@@ -193,48 +181,48 @@ def defs(H: int, extra: str = "", W: int = 1200) -> str:
 
 
 def liquid(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str:
-    """Fundo ASCII de onda liquida: faixas em deriva, cristas senoidais e espuma."""
+    """Campo ASCII liquido cobrindo toda a tela: malha de caracteres em onda 2D."""
     random.seed(seed)
     out: list[str] = []
 
-    # --- camada profunda: faixas de caracteres que deslizam e undulam ---
-    depth_chars = "~≈-=_+·:.~"
-    deep_colors = ["#5e000f", "#6b0012", "#8b0016", "#a8001d"]
-    row_h = 26
-    n_rows = int(H / row_h) + 2
-    for r in range(n_rows):
-        y = 12 + r * row_h
-        seq = "".join(random.choice(depth_chars) for _ in range(int(W / 9) + 4))
-        bob = round(random.uniform(6.5, 11.0), 1)
-        bob_delay = -round(((r / n_rows) * bob * 1.7) % bob, 2)
-        drift = round(random.uniform(15.0, 26.0), 1)
-        drift_delay = -round(random.uniform(0, drift), 2)
-        out.append(
-            f'<g style="animation: waveS {bob}s ease-in-out infinite; animation-delay: {bob_delay}s;">'
-            f'<text x="-40" y="{y}" font-family="{MONO}" font-size="15" fill="{random.choice(deep_colors)}" '
-            f'fill-opacity="{round(random.uniform(max(0.04, lo * 0.45), max(0.07, hi * 0.5)), 2)}" '
-            f'xml:space="preserve" style="animation: driftW {drift}s ease-in-out infinite alternate; '
-            f'animation-delay: {drift_delay}s;">{esc(seq)}</text></g>'
-        )
+    # malha dimensionada para preencher o banner inteiro
+    cell_w = max(36.0, ((W * H) / 560 * 1.4) ** 0.5)
+    cell_h = cell_w * 0.62
+    font = max(13, round(cell_w * 0.38))
+    cols = int(W / cell_w) + 2
+    rows = int(H / cell_h) + 2
+    chars = "~≈~-_.=+~<>|~"
+    palette = ["#6b0012", "#8b0016", "#a8001d", "#c40024", "#ff2d55"]
 
-    # --- cristas: caracteres que sobem e descem formando ondas viajantes ---
-    crest_chars = "~≈~=-_≈"
-    crest_colors = ["#ff4d6d", "#ff0033", "#ff3355"]
-    waves = ["waveA", "waveB", "waveC"] if H >= 340 else ["waveS", "waveA"]
-    n_surf = 3 if H >= 320 else 2
-    for s in range(n_surf):
-        base_y = int(H * (0.34 + s * (0.30 if n_surf == 3 else 0.34)))
-        cls = waves[s % len(waves)]
-        dur = round(6.4 + s * 1.7 + random.uniform(0, 1.1), 1)
-        wave_len = 360 + s * 110
-        shimmer_dur = round(2.9 + s * 0.8, 1)
-        for x in range(2, W, 13):
-            phase = ((x / wave_len) * dur) % dur
+    # onda diagonal coerente: fase cresce com x e y, entao as cristas viajam
+    period = 9.0
+    lam_x = W / 2.3
+    lam_y = H / 1.7
+
+    for r in range(rows):
+        for c in range(cols):
+            x = c * cell_w
+            y = r * cell_h + cell_h * 0.78
+            seq = "".join(random.choice(chars) for _ in range(5))
+            phase = ((x / lam_x) + (y / lam_y)) * period + random.uniform(-0.3, 0.3)
+            delay = -((phase % period))
+            kind = (c * 7 + r * 5) % 13
+            patch = (r // 6 + c // 8) % 4 == 0
+            if kind == 0:
+                cls, fill, fop = "liquidC", "#ff4d6d", round(random.uniform(0.3, 0.6), 2)
+            elif patch:
+                cls, fill, fop = "liquidB", "#8b0016", round(random.uniform(0.14, 0.4), 2)
+            else:
+                cls, fill, fop = (
+                    "liquidA",
+                    random.choice(palette),
+                    round(random.uniform(max(0.08, lo * 1.1), max(0.16, hi * 1.6)), 2),
+                )
             out.append(
-                f'<g style="animation: {cls} {dur}s ease-in-out infinite, shimmer {shimmer_dur}s ease-in-out infinite; '
-                f'animation-delay: -{phase:.2f}s, -{(phase * 0.6) % shimmer_dur:.2f}s;">'
-                f'<text x="{x}" y="{base_y}" font-family="{MONO}" font-size="16" fill="{crest_colors[s % 3]}" '
-                f'fill-opacity="{round(random.uniform(0.28, 0.62), 2)}">{esc(random.choice(crest_chars))}</text></g>'
+                f'<g style="animation: {cls} {period}s ease-in-out infinite; animation-delay: {delay:.2f}s;">'
+                f'<text x="{x:.1f}" y="{y:.1f}" font-family="{MONO}" font-size="{font}" fill="{fill}" '
+                f'fill-opacity="{fop}" textLength="{cell_w + 0.5:.1f}" lengthAdjust="spacingAndGlyphs" '
+                f'xml:space="preserve">{esc(seq)}</text></g>'
             )
 
     # --- espuma: gotas soltas cintilando ---
@@ -248,7 +236,7 @@ def liquid(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str
             f'{esc(random.choice(["·", "+", ".", ":", "≈"]))}</text>'
         )
 
-    return f'<g clip-path="url(#frame)" opacity="0.85">{"".join(out)}</g>'
+    return f'<g clip-path="url(#frame)">{"".join(out)}</g>'
 
 
 def backdrop(W: int, H: int, seed: int, lo: float = 0.10, hi: float = 0.28) -> str:
